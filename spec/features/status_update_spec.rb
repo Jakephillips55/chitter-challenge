@@ -1,16 +1,25 @@
 require 'capybara/rspec'
+require 'pg'
 
-feature 'posting a chit' do
+feature 'Log In' do
   scenario 'visiting the index page' do
     visit('/')
     expect(page).to have_content "Welcome to Chitter"
   end
 
+feature 'Update status'
   scenario 'A user wants to update status' do
-    visit('/chitter')
-    fill_in 'status', with: 'Yo my peeps'
-    click_button('Update')
+    visit('chitter')
+    connection = PG.connect(dbname: 'peeps_test')
+    connection.exec("INSERT INTO peeps VALUES(1, 'First Test Peep');")
+    connection.exec("INSERT INTO peeps VALUES(2, 'other test peep');")
 
-    expect(page).to have_content "Chitter"
+    fill_in 'status', with: 'Yo my peeps'
+    click_button 'Update'
+
+    expect(page).to have_content "Yo my peeps"
+    expect(page).to have_content "First Test Peep"
+    expect(page).to have_content "other test peep"
+
   end
 end

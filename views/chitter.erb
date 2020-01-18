@@ -1,4 +1,14 @@
-<h1> Chitter </h1>
-<textarea rows="4" cols="50" name="status" placeholder="status" required>
-</textarea>
-<button type="button" name="Update"> Update </>
+<Div id = 'new-peep'>
+<form method='post' action='/chitter'>
+ <input type='text' name='status' />
+  <input type='submit' value='Submit' />
+  </form>
+  <button type="button" name="Update"> 
+  <ul>
+    <p>
+    <% @peep.each do |peep| %>
+    <li> status </li>
+    <% end %>
+    <p>
+  </ul>
+</div>

@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 group :test do
+  gem 'capybara' group: :test
   gem 'pg'
   gem 'pry'
-  gem 'capybara'
   gem 'rack'
   gem 'rspec', require: false, group: :test
   gem 'rubocop', '0.71.0', require: false

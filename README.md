@@ -82,3 +82,5 @@ I created the basic web page and first link to the update chitter page. step 2 o
 following from this I created the database that Chitter will utillize to through my code using pqsl and the following cmds
 CREATE DATABASE peeps
 CREATE TABLE peeps(id SERIAL PRIMARY KEY, url VARCHAR(60));
+
+Additionally setup a test database to use in TDD
