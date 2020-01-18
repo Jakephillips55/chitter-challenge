@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 group :test do
+  gem 'pg'
+  gem 'pry'
   gem 'capybara'
   gem 'rack'
   gem 'rspec', require: false, group: :test
