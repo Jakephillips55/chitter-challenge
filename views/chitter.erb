@@ -1,13 +1,19 @@
-<Div id = 'new-peep'>
-<form method='post' action='/chitter'>
-<input type = 'text' name = 'status' />
-  <input type='submit' value='Submit' />
+<div id = 'new-peep'>
+  <form method='post' action='/chitter'>
+    <input type = 'text' id= 'status' name='status' required />
+    <input type='submit' value='Submit' />
   </form>
-  <ul>
-    <p>
-    <% @peep.each do |peep| %>
-    <li> <%= peep %> </li>
+  <table>
+    <tr>
+     <td>Peep</td>
+     <td>Peeped At</td>
+    </tr>
+    <% @peeps.each do |record| %>
+    <tr>
+      <td class='new_peep'><%= record['peep'] %></td>
+      <td class='new_peep'><%= Time.parse(record['created_at']).strftime('%H:%M:%S %p %A') %></td>
+    </tr>
     <% end %>
-    <p>
-  </ul>
+  </table>
+  
 </div>

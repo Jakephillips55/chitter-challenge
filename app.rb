@@ -10,7 +10,7 @@ class Chitter < Sinatra::Base
 # setup database make status updates display on page
 
   get '/chitter' do
-    @peep = ChitterControl.all
+    @peeps = ChitterControl.all
 
     # 'Hello'
     # ChitterControl.create(status: status)
