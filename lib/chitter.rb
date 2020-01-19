@@ -1,24 +1,19 @@
 require 'pg'
+require_relative '../test_env'
 
 class ChitterControl
 
-  def self.all
-    if ENV['ENVIROMENT'] == 'test'
-      connecto = PG.connect(dbname: 'peeps_test')
-    else
-      connecto = PG.connect(dbname: 'peeps')
-    end
+  attr_accessor :connecto
 
-    output = connecto.exec("SELECT * FROM peeps;")
+  def self.all
+  @connecto = test_env
+
+    output = @connecto.exec("SELECT * FROM peeps;")
     output.map { |variable| variable['peep'] }
   end
 
   def self.create(peep:)
-    if ENV['ENVIROMENT'] == 'test'
-      connecto = PG.connect(dbname: 'peeps_test')
-    else
-      connecto = PG.connect(dbname: 'peeps')
-    end
-    connecto.exec("INSERT INTO peeps (peep) VALUES('#{peep}')")
+    test_env
+      @connecto.exec("INSERT INTO peeps (peep) VALUES('#{peep}')")
   end
 end

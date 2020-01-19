@@ -15,7 +15,7 @@ feature 'Update status'
     connection.exec("INSERT INTO peeps VALUES(2, 'other test peep');")
 
     fill_in 'status', with: 'Yo my peeps'
-    click_button 'Update'
+    click_button 'Submit'
 
     expect(page).to have_content "Yo my peeps"
     expect(page).to have_content "First Test Peep"

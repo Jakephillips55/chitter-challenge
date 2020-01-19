@@ -20,10 +20,10 @@ class Chitter < Sinatra::Base
 
   get '/chitter/new' do
     erb :"chitter/new"
-  end 
+  end
 
   post '/chitter' do
-    Bookmark.create(peep: params[:peep])
+    ChitterControl.create(peep: params[:status])
     redirect 'chitter'
   end
 
