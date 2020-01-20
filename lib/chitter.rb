@@ -16,6 +16,20 @@ class ChitterControl
 
   def self.create(peep:)
     @connecto = test_env
-    @connecto.exec("INSERT INTO peeps (peep) VALUES('#{peep}')")
+    @connecto.exec("INSERT INTO peeps (peep) VALUES('#{peep}');")
+  end
+
+  def self.secure(email:, password:)
+    @connecto = test_env
+    output = @connecto.exec("SELECT email, password FROM users WHERE email = '#{email}',
+      '#{password}';")
+    user_email = output[:email]
+    user_password = output[:password]
+
+    if user_email == :email && user_password == :password
+      return true
+    else
+      return false
+    end
   end
 end
